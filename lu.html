@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nuestra historia de amor y galería de recuerdos especiales.">
+    <title>Luz Nayely :3</title>
+    <link rel="stylesheet" href="FONDO.CSS">
+    <style>
+      /* Permitir scroll suave al hacer clic en el menú */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: #1a1a24;
+        color: #e0e0e0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        box-sizing: border-box;
+      }
+
+      /* Barra de Navegación Fija */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(36, 36, 51, 0.95);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 5px;
+        z-index: 1000;
+        border-bottom: 1px solid #ff79c6;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      nav a {
+        color: #f8f8f2;
+        background-color: #1a1a24;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        border: 1px solid #bd93f9;
+        transition: all 0.2s ease;
+      }
+
+      nav a:hover {
+        background-color: #ff79c6;
+        color: #1a1a24;
+        text-decoration: none;
+        transform: translateY(-2px);
+      }
+
+      /* Estilos para la pantalla de bienvenida / Interfaz inicial */
+      #pantalla-inicio {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1a1a24;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        transition: opacity 0.5s ease;
+      }
+
+      .tarjeta-inicio {
+        background-color: #242433;
+        padding: 30px 20px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        max-width: 400px;
+        width: 100%;
+        border: 1px solid #ff79c6;
+      }
+
+      .tarjeta-inicio h1 {
+        font-size: 1.5rem;
+        color: #ff79c6;
+        margin-bottom: 10px;
+      }
+
+      .tarjeta-inicio p {
+        color: #f8f8f2;
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+
+      .tarjeta-inicio button {
+        background-color: #ff79c6;
+        color: #1a1a24;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.2s;
+        width: 100%;
+      }
+
+      .tarjeta-inicio button:hover {
+        background-color: #bd93f9;
+        transform: scale(1.02);
+      }
+
+      /* Ocultar el contenido principal al inicio */
+      main {
+        display: none;
+        max-width: 600px;
+        margin: 90px auto 30px auto;
+        padding: 0 15px;
+      }
+
+      h1 {
+        color: #ff79c6;
+        font-size: 1.8rem;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      h2 {
+        color: #bd93f9;
+        font-size: 1.4rem;
+        border-bottom: 2px solid #ff79c6;
+        padding-bottom: 5px;
+        margin-top: 35px;
+      }
+
+      section {
+        scroll-margin-top: 80px;
+      }
+
+      .historia-texto {
+        background-color: #242433;
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      .historia-texto p {
+        font-size: 1rem;
+        margin-bottom: 14px;
+        text-align: left;
+        color: #f8f8f2;
+      }
+
+      .historia-texto p:last-child {
+        margin-bottom: 0;
+      }
+
+      ol {
+        padding-left: 20px;
+      }
+
+      ol li {
+        margin-bottom: 10px;
+      }
+
+      main a {
+        color: #ff79c6;
+        text-decoration: none;
+      }
+
+      main a:hover {
+        text-decoration: underline;
+        color: #bd93f9;
+      }
+
+      figure {
+        margin: 0 0 20px 0;
+        text-align: center;
+      }
+
+      img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 380px;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+        margin: 10px auto 5px auto;
+      }
+
+      video {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 450px;
+        object-fit: contain;
+        background-color: #000;
+        border-radius: 10px;
+        display: block;
+        margin: 10px auto 5px auto;
+      }
+
+      figcaption p {
+        font-size: 0.95rem;
+        font-weight: bold;
+        color: #bd93f9;
+        margin-top: 6px;
+      }
+
+      /* Estilo especial para la Tarjeta Interactiva de Razones */
+      .tarjeta-razon-box {
+        background: linear-gradient(145deg, #242433, #1e1e2c);
+        border: 2px solid #ff79c6;
+        border-radius: 16px;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(255, 121, 198, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .tarjeta-razon-box:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(255, 121, 198, 0.25);
+      }
+
+      #texto-razon {
+        font-size: 1.15rem;
+        color: #f8f8f2;
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 25px;
+        padding: 0 10px;
+        font-weight: 500;
+      }
+
+      .btn-razon {
+        background-color: #ff79c6;
+        color: #1a1a24;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 15px rgba(255, 121, 198, 0.4);
+      }
+
+      .btn-razon:hover {
+        background-color: #bd93f9;
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(189, 147, 249, 0.5);
+      }
+
+      /* Reproductor de Música Flotante */
+      #reproductor-flotante {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgba(36, 36, 51, 0.95);
+        border: 2px solid #ff79c6;
+        border-radius: 30px;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        z-index: 998;
+        backdrop-filter: blur(5px);
+        display: none; /* Se muestra al terminar el quiz */
+      }
+
+      #btn-musica {
+        background-color: #ff79c6;
+        color: #1a1a24;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s, background-color 0.2s;
+      }
+
+      #btn-musica:hover {
+        background-color: #bd93f9;
+        transform: scale(1.1);
+      }
+
+      .info-cancion span {
+        display: block;
+        font-size: 0.8rem;
+        color: #bd93f9;
+      }
+
+      .info-cancion strong {
+        font-size: 0.85rem;
+        color: #f8f8f2;
+      }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de Bienvenida con Quiz -->
+    <div id="pantalla-inicio">
+      <div class="tarjeta-inicio" id="contenedor-quiz">
+        <h1 id="titulo-pregunta">Pregunta 1 de 7</h1>
+        <p id="texto-pregunta">Cargando...</p>
+        
+        <div id="opciones-container" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;"></div>
+
+        <div id="input-container" style="display: none; margin-top: 15px;">
+          <input type="text" id="respuesta-libre" placeholder="Escribe aquí tu respuesta..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ff79c6; background-color: #1a1a24; color: #fff; text-align: center; font-size: 1rem; margin-bottom: 12px; box-sizing: border-box;">
+          <button id="btn-enviar-libre" onclick="responderLibre()">Enviar y Entrar ❤️</button>
+        </div>
+        
+        <p id="mensaje-error" style="color: #ff5555; margin-top: 12px; display: none; font-size: 0.9rem;"></p>
+      </div>
+    </div>
+
+    <!-- Menú de Navegación por Secciones -->
+    <nav id="menu-navegacion" style="display: none;">
+      <a href="#seccion-historia">📖 Historia</a>
+      <a href="#seccion-canciones">🎵 Canciones</a>
+      <a href="#seccion-razones">💕 Razones</a>
+      <a href="#seccion-fotos">📸 Fotos</a>
+      <a href="#seccion-videos">🎬 Videos</a>
+    </nav>
+
+    <!-- Reproductor de Música Flotante -->
+    <div id="reproductor-flotante">
+      <button id="btn-musica" onclick="toggleMusica()">▶</button>
+      <div class="info-cancion">
+        <span>Música de fondo</span>
+        <strong>Photograph - Ed Sheeran</strong>
+      </div>
+      <!-- Audio con enlace de música directa (puedes cambiar el src si prefieres otro mp3) -->
+      <audio id="audio-fondo" loop>
+        <source src="audios/ejemplo.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+
+    <!-- REPRODUCTOR DE MÚSICA FLOTANTE -->
+    <div id="reproductor-flotante">
+      <button id="btn-musica" onclick="toggleMusica()">▶</button>
+      <div class="info-cancion">
+        <span>Música de fondo</span>
+        <strong>Photograph - Ed Sheeran</strong>
+      </div>
+      <!-- Archivo de audio local (asegúrate de tener tu carpeta 'audios' con 'cancion.mp3') -->
+      <audio id="audio-fondo" loop>
+        <source src="./audios/cancion.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </div>
+    <!-- Contenido Principal -->
+    <main>
+      <h1>Te amo mucho mi amor :3</h1>
+
+      <!-- CONTADOR DE TIEMPO JUNTOS -->
+      <section style="text-align: center; margin: 20px 0 25px 0;">
+        <div style="background-color: #242433; border: 1px solid #ff79c6; border-radius: 12px; padding: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+          <h3 style="color: #ff79c6; margin-top: 0; font-size: 1.1rem;">Llevamos juntos:</h3>
+          <div id="contador-tiempo" style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 8px;">
+            <div style="background: #1a1a24; padding: 8px 12px; border-radius: 8px; min-width: 55px;">
+              <span id="dias" style="display: block; font-size: 1.4rem; font-weight: bold; color: #f1fa8c;">0</span>
+              <small style="color: #bd93f9; font-size: 0.8rem;">Días</small>
+            </div>
+            <div style="background: #1a1a24; padding: 8px 12px; border-radius: 8px; min-width: 55px;">
+              <span id="horas" style="display: block; font-size: 1.4rem; font-weight: bold; color: #f1fa8c;">0</span>
+              <small style="color: #bd93f9; font-size: 0.8rem;">Horas</small>
+            </div>
+            <div style="background: #1a1a24; padding: 8px 12px; border-radius: 8px; min-width: 55px;">
+              <span id="minutos" style="display: block; font-size: 1.4rem; font-weight: bold; color: #f1fa8c;">0</span>
+              <small style="color: #bd93f9; font-size: 0.8rem;">Minutos</small>
+            </div>
+            <div style="background: #1a1a24; padding: 8px 12px; border-radius: 8px; min-width: 55px;">
+              <span id="segundos" style="display: block; font-size: 1.4rem; font-weight: bold; color: #ff79c6;">0</span>
+              <small style="color: #bd93f9; font-size: 0.8rem;">Segundos</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: HISTORIA -->
+      <section id="seccion-historia">
+        <h2>Nuestra historia de amor</h2>
+        <div class="historia-texto">
+          <p>Bueno mi amor, nuestra historia de enamoramiento fue rara, más bien fue algo único. Todo comenzó gracias a la señal: buscando gente para hacer hora te encontré xD, fue lo más random. Hablábamos a veces o muy pocas veces, hasta halloween del 2023 donde Maciel me dejó de hablar y ahí me volví más cercano a ti.</p>
+          <p>Pasó el tiempo poco a poco hasta el 2024, cuando en el cumple de Marlon (24/01/2024) salimos por primera vez xD. Fui un wbn que estaba callado todo el rato, me acuerdo que tú estábamos bien tapada; vine a la posta y fuimos a la coope porque ahí te iba a recoger tu papá.</p>
+          <p>Después empezamos a jugar Free y nos hicimos dúo dinámico que sigue hasta el día de hoy. Pasó el tiempo y llegaron los carnavales, donde yo salí con Avaloz y Nirvana; llegaste de la nada junto a tu hermano xD (pensé q era tu enamorado) y pues jugamos un rato (mojamos a la mamá de la Quispe, fue gracioso xD).</p>
+          <p>Pasando eso fuimos a la casa de Avaloz. Yo no iba a venir xD pero Avaloz me dijo que tú irías y dije <em>"tengo que ir"</em> xD y pues así fue: fuiste tú, Luz y Fátima. Hiciste panqueques xD (no comí) y después te di para el pasaje de Luz. Luego te acompañamos a casa y en el transcurso llegamos a la plaza de armas donde jugamos fut con unos niños e hicimos hora al borrachito (serenazgo casi nos lleva xD). Fue gracioso, pero lo más lindo fue estar contigo.</p>
+          <p>Pasó el tiempo e hice rosas eternas de color morado porque era tu color favorito (o bueno el lila, pero no había ese color xd). Intenté dárselas a Cris y Natali pero no pude xD, y pues a ti sí porque simplemente eran para ti xd jsjsjs.</p>
+          <p>Así pasó el tiempo y me fui a Lima :c. Ahí me sentí vacío, como si algo me faltara. Siempre hablaba contigo y me sentía bien xD; aunque ambos estábamos en una relación, nos queríamos. Un día subimos una foto de nuestros ojos con la canción <em>"Just the way you are"</em> de Bruno Mars xD. Para mí fue bonito, hasta ahora lo tengo en mi cuenta de tiktok, cuenta que creamos con el fin de generar recuerdos y si nos separamos, siempre tenernos presentes.</p>
+          <p>También te hablé de una moto, la cual para mí era "Ameri", pero no te podía decir que íbamos a tener una hija ¿no? xd y pues era una moto.</p>
+          <p>Pasó el tiempo y volví de Lima. Esa noche fuiste por primera vez a mi casa con el fin de ayudarte a estudiar, pero más bien jugamos Free xD. Me invitaste arroz con leche (un táper lleno) y comí todo porque me gustó xD. Pasaron los días y volviste a casa pero con Liz y la Yaulina xd, nos dibujaste hongos xD.</p>
+          <p>Pasó el tiempo y te fuiste a Lima de vacaciones hasta que volviste a clases (yo en La Pre y tú en la Coope). No fue hasta el 23 de Agosto que "salimos" por primera vez xD, todo porque fue el cumple del abuelo y lo hicieron en la casa de Marcelo. Te mandé una foto diciendo <em>"no sé dóndeandonde"</em> y me respondiste <em>"es por mi casa"</em>, y pues coincidimos ese día. Ambos teníamos examen semanal ese día y en la noche te insistí para salir xD. Saliste con tus sandalias de Hello Kitty xD (siempre recordaré eso) y yo salí con Marcelo, ahí te conoció.</p>
+          <p>Pasaron dos días y fue nuestra primera salida: tú saliste con tu luna jsjsjs y nos fuimos al arco, estuvimos toda la tarde sentados. Así pasaron los días y te decía para salir en las noches después de tu cole, pero ibas con Liz y pues para tener espacio te dije que le presentaría a Nirvana. Lo intentamos 2 veces xD mientras ellos se hablaban a la fuerza nosotros nos tomábamos fotos jsjsjs. Así se volvió una rutina para ti esperarme en mis salidas. Poco a poco nos volvimos más unidos y así fue nuestra historia de enamoramiento, Lu :3</p>
+        </div>
+
+        <h3 style="color: #bd93f9; margin-top: 25px;">Lo que me enamoró de ti</h3>
+        <ol> 
+          <li>Tus lindos ojitos dormilones</li>
+          <li>Tu linda sonrisa</li>
+          <li>Tu linda manera de ser</li>
+          <li>La forma en la que me sentía contigo</li>
+          <li>Lo que me haces sentir</li>
+          <li>Que te reías de mis chistes malos</li>
+          <li>Que me apoyabas en mis cosas</li>
+          <li>En sí me enamoré de ti por todo lo que eres y lo que me haces sentir, todo de ti es único, tengo un sentimiento único hacia ti que aún sigue intacto</li>
+        </ol>
+      </section>
+
+      <!-- SECCIÓN: CANCIONES -->
+      <section id="seccion-canciones">
+        <h2>Canciones que me recuerdan a ti :3</h2>
+        <ol>
+          <li><a href="https://www.youtube.com/results?search_query=Photograph+Ed+Sheeran+official+video&sp=EgIQAQ%253D%253D" target="_blank">Photograph - Ed Sheeran</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Amándote+Anna+Carina+official+video&sp=EgIQAQ%253D%253D" target="_blank">Amándote - Anna Carina</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Yellow+Coldplay+official+video&sp=EgIQAQ%253D%253D" target="_blank">Yellow - Coldplay</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=The+Scientist+Coldplay+official+video&sp=EgIQAQ%253D%253D" target="_blank">The Scientist - Coldplay</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Fix+You+Coldplay+official+video&sp=EgIQAQ%253D%253D" target="_blank">Fix You - Coldplay</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=I+Wanna+Be+Yours+Arctic+Monkeys+official+video&sp=EgIQAQ%253D%253D" target="_blank">I Wanna Be Yours - Arctic Monkeys</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Perfect+Ed+Sheeran+official+video&sp=EgIQAQ%253D%253D" target="_blank">Perfect - Ed Sheeran</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=A+Thousand+Years+Christina+Perri+official+video&sp=EgIQAQ%253D%253D" target="_blank">A Thousand Years - Christina Perri</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Love+Me+Like+You+Do+Ellie+Goulding+official+video&sp=EgIQAQ%253D%253D" target="_blank">Love Me Like You Do - Ellie Goulding</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Dandelions+Ruth+B.+official+video&sp=EgIQAQ%253D%253D" target="_blank">Dandelions - Ruth B.</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Those+Eyes+New+West+official+video&sp=EgIQAQ%253D%253D" target="_blank">Those Eyes - New West</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Car's+Outside+James+Arthur+official+video&sp=EgIQAQ%253D%253D" target="_blank">Car's Outside - James Arthur</a></li>
+          <li><a href="https://youtu.be/25dKVeNFnt4?si=A4fzqVsQQ8A_cW2s" target="_blank">Mary On A Cross - Ghost</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Frances+Limón+Enanitos+Verdes+official+video&sp=EgIQAQ%253D%253D" target="_blank">Frances Limón - Enanitos Verdes</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Enamorado+Tuyo+El+Cuarteto+de+Nos+official+video&sp=EgIQAQ%253D%253D" target="_blank">Enamorado Tuyo - El Cuarteto de Nos</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=My+Only+One+official+video&sp=EgIQAQ%253D%253D" target="_blank">My Only One</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Amtrak+Los+Retros+official+video&sp=EgIQAQ%253D%253D" target="_blank">Amtrak - Los Retros</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Heart+to+Heart+Mac+DeMarco+official+video&sp=EgIQAQ%253D%253D" target="_blank">Heart to Heart - Mac DeMarco</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=My+Love+Mine+All+Mine+Mitski+official+video&sp=EgIQAQ%253D%253D" target="_blank">My Love Mine All Mine - Mitski</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Snowman+Sia+official+video&sp=EgIQAQ%253D%253D" target="_blank">Snowman - Sia</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Young+and+Beautiful+Lana+Del+Rey+official+video&sp=EgIQAQ%253D%253D" target="_blank">Young and Beautiful - Lana Del Rey</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Can+I+Call+You+Tonight+Dayglow+official+video&sp=EgIQAQ%253D%253D" target="_blank">Can I Call You Tonight? - Dayglow</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Do+You+Think+You+Could+Love+Me+Yung+Kai+official+video&sp=EgIQAQ%253D%253D" target="_blank">Do You Think You Could Love Me - Yung Kai</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=IF+ITS+NOT+YOU+PRYVT+official+video&sp=EgIQAQ%253D%253D" target="_blank">IF IT'S NOT YOU - PRYVT</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Sparks+Coldplay+official+video&sp=EgIQAQ%253D%253D" target="_blank">Sparks - Coldplay</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Apocalypse+Cigarettes+After+Sex+official+video&sp=EgIQAQ%253D%253D" target="_blank">Apocalypse - Cigarettes After Sex</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=All+I+Want+Kodaline+official+video&sp=EgIQAQ%253D%253D" target="_blank">All I Want - Kodaline</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Anchor+Novo+Amor+official+video&sp=EgIQAQ%253D%253D" target="_blank">Anchor - Novo Amor</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Sailor+Song+Gigi+Perez+official+video&sp=EgIQAQ%253D%253D" target="_blank">Sailor Song - Gigi Perez</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=This+Side+of+Paradise+Coyote+Theory+official+video&sp=EgIQAQ%253D%253D" target="_blank">This Side of Paradise - Coyote Theory</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Gone+Gone+Gone+Phillip+Phillips+official+video&sp=EgIQAQ%253D%253D" target="_blank">Gone, Gone, Gone - Phillip Phillips</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Wings+Birdy+official+video&sp=EgIQAQ%253D%253D" target="_blank">Wings - Birdy</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Fade+Into+You+Mazzy+Star+official+video&sp=EgIQAQ%253D%253D" target="_blank">Fade Into You - Mazzy Star</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Oh+My+Angel+Bertha+Tillman+official+video&sp=EgIQAQ%253D%253D" target="_blank">Oh My Angel - Bertha Tillman</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Sit+Down+Beside+Me+Patrick+Watson+official+video&sp=EgIQAQ%253D%253D" target="_blank">Sit Down Beside Me - Patrick Watson</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Catorce+Sebastián+Romero+official+video&sp=EgIQAQ%253D%253D" target="_blank">Catorce - Sebastián Romero</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Locos+León+Larregui+official+video&sp=EgIQAQ%253D%253D" target="_blank">Locos - León Larregui</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Amor+Completo+Mon+Laferte+official+video&sp=EgIQAQ%253D%253D" target="_blank">Amor Completo - Mon Laferte</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Luna+Zoé+official+video&sp=EgIQAQ%253D%253D" target="_blank">Luna - Zoé</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Primaveral+Mon+Laferte+official+video&sp=EgIQAQ%253D%253D" target="_blank">Primaveral - Mon Laferte</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Amapolas+Leo+Rizzi+official+video&sp=EgIQAQ%253D%253D" target="_blank">Amapolas - Leo Rizzi</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Amor+Infinito+Pablo+Heredia+official+video&sp=EgIQAQ%253D%253D" target="_blank">Amor Infinito - Pablo Heredia</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Donde+Nadie+Pueda+Ir+Manuel+Medrano+official+video&sp=EgIQAQ%253D%253D" target="_blank">Donde Nadie Pueda Ir - Manuel Medrano</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Brillas+León+Larregui+official+video&sp=EgIQAQ%253D%253D" target="_blank">Brillas - León Larregui</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=En+el+Muelle+de+San+Blas+Maná+official+video&sp=EgIQAQ%253D%253D" target="_blank">En el Muelle de San Blas - Maná</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Mi+Persona+Favorita+Río+Roma+official+video&sp=EgIQAQ%253D%253D" target="_blank">Mi Persona Favorita - Río Roma</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Volví+a+Nacer+Carlos+Vives+official+video&sp=EgIQAQ%253D%253D" target="_blank">Volví a Nacer - Carlos Vives</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Cuando+Nos+Volvamos+a+Encontrar+Carlos+Vives+official+video&sp=EgIQAQ%253D%253D" target="_blank">Cuando Nos Volvamos a Encontrar - Carlos Vives</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Bailar+Contigo+Carlos+Vives+official+video&sp=EgIQAQ%253D%253D" target="_blank">Bailar Contigo - Carlos Vives</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Te+Voy+a+Amar+Axel+official+video&sp=EgIQAQ%253D%253D" target="_blank">Te Voy a Amar - Axel</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Sabes+Reik+official+video&sp=EgIQAQ%253D%253D" target="_blank">Sabes - Reik</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=No+Veo+la+Hora+Noel+Schajris+official+video&sp=EgIQAQ%253D%253D" target="_blank">No Veo la Hora - Noel Schajris</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Estoy+Enamorado+Thalía+Pedro+Capó+official+video&sp=EgIQAQ%253D%253D" target="_blank">Estoy Enamorado - Thalía, Pedro Capó</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Confieso+Humbe+official+video&sp=EgIQAQ%253D%253D" target="_blank">Confieso - Humbe</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Cásate+Conmigo+Silvestre+Dangond+official+video&sp=EgIQAQ%253D%253D" target="_blank">Cásate Conmigo - Silvestre Dangond</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Darte+un+Beso+Prince+Royce+official+video&sp=EgIQAQ%253D%253D" target="_blank">Darte un Beso - Prince Royce</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Creo+en+Ti+Reik+official+video&sp=EgIQAQ%253D%253D" target="_blank">Creo en Ti - Reik</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Destino+o+Casualidad+Ha+Ash+official+video&sp=EgIQAQ%253D%253D" target="_blank">Destino o Casualidad - Ha*Ash</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Vamos+a+Escapar+Amy+Gutiérrez+official+video&sp=EgIQAQ%253D%253D" target="_blank">Vamos a Escapar - Amy Gutiérrez</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Cuando+Me+Enamoro+Enrique+Iglesias+official+video&sp=EgIQAQ%253D%253D" target="_blank">Cuando Me Enamoro - Enrique Iglesias</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Corazón+Sin+Cara+Prince+Royce+official+video&sp=EgIQAQ%253D%253D" target="_blank">Corazón Sin Cara - Prince Royce</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Amor+a+Primera+Vista+Deyvis+Orosco+official+video&sp=EgIQAQ%253D%253D" target="_blank">Amor a Primera Vista - Deyvis Orosco</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Colgando+en+Tus+Manos+Carlos+Baute+official+video&sp=EgIQAQ%253D%253D" target="_blank">Colgando en Tus Manos - Carlos Baute</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Tienes+la+Magia+Silvio+y+El+Vega+official+video&sp=EgIQAQ%253D%253D" target="_blank">Tienes la Magia - Silvio y El Vega</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=El+Perdedor+Enrique+Iglesias+official+video&sp=EgIQAQ%253D%253D" target="_blank">El Perdedor - Enrique Iglesias</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Qué+Gano+Olvidándote+Reik+official+video&sp=EgIQAQ%253D%253D" target="_blank">Qué Gano Olvidándote - Reik</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Back+to+Friends+sombr+official+video&sp=EgIQAQ%253D%253D" target="_blank">Back to Friends - sombr</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Something+About+You+Eyedress+official+video&sp=EgIQAQ%253D%253D" target="_blank">Something About You - Eyedress</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Beginning+Middle+End+Leah+Nobel+official+video&sp=EgIQAQ%253D%253D" target="_blank">Beginning Middle End - Leah Nobel</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Despues+de+ti+Los+del+fuego+official+video&sp=EgIQAQ%253D%253D" target="_blank">Después de ti - Los del fuego</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Ameri+Duki+official+video&sp=EgIQAQ%253D%253D" target="_blank">Ameri - Duki</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Madonna+Oscar+Maydon+official+video&sp=EgIQAQ%253D%253D" target="_blank">Madonna - Oscar Maydon</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Tu+boda+Oscar+Maydon+y+Fuerza+regida+official+video&sp=EgIQAQ%253D%253D" target="_blank">Tu boda - Oscar Maydon y Fuerza regida</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Bonnie+and+clyde+iZaak+official+video&sp=EgIQAQ%253D%253D" target="_blank">Bonnie and clyde - iZaak</a></li>
+          <li><a href="https://www.youtube.com/results?search_query=Stand+by+me+Ben+E+King+official+video&sp=EgIQAQ%253D%253D" target="_blank">Stand by me - Ben E. King</a></li>
+        </ol>
+      </section>
+
+      <!-- SECCIÓN: RAZONES POR LAS QUE TE AMO (ESTILO TARJETA INTERACTIVA) -->
+      <section id="seccion-razones">
+        <h2>Razones por las que te amo ❤️</h2>
+        <div class="tarjeta-razon-box">
+          <p id="texto-razon">
+            Haz clic en el botón de abajo para descubrir una razón por la que te amo :3
+          </p>
+          <button class="btn-razon" onclick="mostrarOtraRazon()">
+            ✨ Dame otra razón
+          </button>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: FOTOS -->
+      <section id="seccion-fotos">
+        <h2>GALERÍA DE RECUERDOS</h2>
+
+        <figure>
+          <img src="./fotos/12-03-2024.jpg" alt="Las rosas moradas"/>
+          <figcaption><p>12-03-2024: Las rosas moradas</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/14-07-2024.jpg" alt="Tu poderoso arroz con leche"/>
+          <figcaption><p>14-07-2024: Tu poderoso arroz con leche</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/14-07-2024 (2).jpg" alt="Nuestros deditos"/>
+          <figcaption><p>14-07-2024: Nuestros deditos</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/18-07-2024.jpg" alt="Los hongos que dibujaste"/>
+          <figcaption><p>18-07-2024: Los hongos que dibujaste</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/22-07-2024.jpg" alt="Cuando te fuiste a Lima"/>
+          <figcaption><p>22-07-2024: Cuando te fuiste a Lima</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/25-08-2024.jpg" alt="Nuestra primera salida al arco"/>
+          <figcaption><p>25-08-2024: Nuestra primeira salida al arco</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/27-08-2024.jpg" alt="Cuando le presente a Liz a Nirvana"/>
+          <figcaption><p>27-08-2024: Cuando le presente a Liz a Nirvana</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/29-08-2024.jpg" alt="Segundo intento de Liz y Nirvana"/>
+          <figcaption><p>29-08-2024: Segundo intento de Liz y Nirvana ahi si se hablaron y nosotros aprovechamos para tomarnos fotos xd</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/30-08-2024.jpg" alt="Otra salida al arco"/>
+          <figcaption><p>30-08-2024: Otra salida al arco</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/04-09-2024.jpg" alt="Primeras veces que te acompañaba a casa"/>
+          <figcaption><p>04-09-2024: Primeras veces que te acompañaba a casa</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/05-09-2024.jpg" alt="Entrenamiento"/>
+          <figcaption><p>05-09-2024: Cuando entrenabas en el parque de ascension y te esperaba xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/14-09-2024.jpg" alt="Salida con amigas"/>
+          <figcaption><p>14-09-2024: Cuando saliste con tus amigas y me llevaste xd</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/21-09-2024.jpg" alt="Flores amarillas"/>
+          <figcaption><p>21-09-2024: Cuando te di las flores amarillas xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/22-09-2024.jpg" alt="ESCALINATA"/>
+          <figcaption><p>22-09-2024: Cuando fuimos a la escalinata de noche xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/27-09-2024.jpg" alt="Primer beso"/>
+          <figcaption><p>27-09-2024: Bueno esa foto fue despues de nuestro primer beso xD cuando venian a mi casa con tus compañeras y mis amigos xD y pues me escribiste eso fu happy</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/30-09-2024.jpg" alt="Carritos"/>
+          <figcaption><p>30-09-2024: Cuando me regalaste los carritos xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/06-10-2024.jpg" alt="Alma dinamita"/>
+          <figcaption><p>06-10-2024: Intente hacer detalles xd no me salio pero igual te lo di</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/17-10-2024.jpg" alt="Lugares"/>
+          <figcaption><p>17-10-2024: Bueno esa foto mas q nada pq ahi nos hicimos novios muejeje</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/17-10-2024 (2).jpg" alt="Bemaste"/>
+          <figcaption><p>17-10-2024: Fotito en la estacion xD tomada por Liz y pues "Bemaste"</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/alpaquitay.jpg" alt="Alpaqutay"/>
+          <figcaption><p>27-10-2024: Bueno esta foto fue en el dia de mi danza, donde me acompañaste y me invitaste un emoliente, del mmilenium ahi, escuchando alpaquitay en plena lluvia</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/08-11-2024.jpg" alt="Lugar frecuente"/>
+          <figcaption><p>08-11-2024: Lugar donde siempre estabamos xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/26-11-2024.jpg" alt="One of the girls"/>
+          <figcaption><p>26-11-2024: Solo dire One of the girls</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/Estrella.jpeg" alt="Estrella"/>
+          <figcaption><p>Estrella con Marcelo y Marlon</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/los4.jpg" alt="Los 4"/>
+          <figcaption><p>Los4: Marcelo, Marlon y nosotros</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/21-12-2024.jpg" alt="Gatote"/>
+          <figcaption><p>21-12-2024: Cuando fuimos a recoger al gatote</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/23-12-2024.jpg" alt="Ultima foto del año"/>
+          <figcaption><p>23-12-2024: Ultima foto del año</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/Cumple.jpg" alt="Cumpleaños"/>
+          <figcaption><p>Cumple: Bueno esta foto fue en mi cumpleaños xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/16-01-2025.jpg" alt="Primera noche"/>
+          <figcaption><p>16-01-2025: Primera noche que dormimos juntos</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/20-01-2025.jpg" alt="Antes de irme a lima"/>
+          <figcaption><p>20-01-2025: Antes de irme a lima con mi corte XD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/03-02-2025.jpg" alt="Regreso de lima"/>
+          <figcaption><p>03-02-2025: Regreso de lima con capibaras xD me trajiste lomo recuerdo xD fue bonito des locos con capibaras en la cabeza, no entenderian la vibra xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/08-02-2025.jpg" alt="Otra noche"/>
+          <figcaption><p>08-02-2025: Otra noche que intentamos dormir pero ama descubrio, vimos la pelicula "elemental" fue lindo xD y yo v mis wbds tmbn jdjsk</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/05-03-2025.jpg" alt="Piscina / Tren"/>
+          <figcaption><p>05-03-2025: Fotito en la piscina o bueno en el tren q esta cerca xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/05-03-2025.jpeg" alt="La florcita"/>
+          <figcaption><p>05-03-2025: La florcita</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/26-03-2025.jpg" alt="Noche en la escalinata"/>
+          <figcaption><p>26-03-2025: Noche que fui a devolverte tus cosas a la escalinata, terminamos volviendo, fue lindo esa madrugada</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/17-04-2025.jpg" alt="Semana Santa"/>
+          <figcaption><p>17-04-2025: Semana santa salimos, fuimos a caminar, volviendo a tu casa pensamos q se estaba quemando una casa xD llamamos a los bomberos y al final no habia nada</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/18-04-2025.jpeg" alt="Cerro de la cruz"/>
+          <figcaption><p>18-04-2025: Caminata al cerro de la cruz, fue epico</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/09-05-2025.jpg" alt="Anillos"/>
+          <figcaption><p>09-05-2025: Nuestros anillos muejeje</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/15-05-2025.jpg" alt="Estadio UDA"/>
+          <figcaption><p>15-05-2025: Fuimos al estadio a ver a mi poderoso UDA xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/25-05-2025.jpg" alt="Caminata en la lluvia"/>
+          <figcaption><p>25-05-2025: Caminata por las rieles en plena lluvia xd</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/09-06-2025.jpg" alt="Corrida de toros"/>
+          <figcaption><p>09-06-2025: Corrida de toros xd epico</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/14-06-2025 (2).jpg" alt="Caminata cementerio"/>
+          <figcaption><p>14-06-2025: Caminata hacia ns el cementerio xD</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/14-06-2025.jpg" alt="Luna"/>
+          <figcaption><p>14-06-2025: Volviendo nos tomamos esa foto, la cual me recuerda a la cancion "luna"</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/20-06-2025.jpg" alt="Foto random"/>
+          <figcaption><p>20-06-2025: Foto random xd</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/21-06-2025.jpg" alt="Espejo"/>
+          <figcaption><p>21-06-2025: Foto en el espejo bueno no solo fue una sino varias jdks</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/13-07-2025.jpeg" alt="Estadio Marlon"/>
+          <figcaption><p>13-07-2025: Estadio con Marlon</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/31-07-2025.jpeg" alt="Foto random"/>
+          <figcaption><p>31-07-2025: Foto random</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/08-08-2025.jpeg" alt="Lokeando Marlon"/>
+          <figcaption><p>08-08-2025: Lokeando con Marlon</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/27-08-2025.jpeg" alt="Foto random"/>
+          <figcaption><p>27-08-2025: Foto random</p></figcaption>
+        </figure>
+        <figure>
+          <img src="./fotos/09-09-2025.jpeg" alt="Te amo mi amor"/>
+          <figcaption><p>09-09-2025: Te amo mi amor</p></figcaption>
+        </figure>
+      </section>
+
+      <!-- SECCIÓN: VIDEOS -->
+      <section id="seccion-videos">
+        <h2>SECCIÓN DE VIDEOS</h2>
+        <figure>
+          <video controls src="./videos/15de mi primadx.mp4"></video>
+          <figcaption><p>15 de mi primadx</p></figcaption>
+        </figure>
+        <figure>
+          <video controls src="./videos/ANILLO.mp4"></video>
+          <figcaption><p>Anillo</p></figcaption>
+        </figure>
+        <figure>
+          <video controls src="./videos/anillo2.mp4"></video>
+          <figcaption><p>Anillo 2</p></figcaption>
+        </figure>
+        <figure>
+          <video controls src="./videos/animado.mp4"></video>
+          <figcaption><p>Animado</p></figcaption>
+        </figure>
+        <figure>
+          <video controls src="./videos/añia.mp4"></video>
+          <figcaption><p>Añia</p></figcaption>
+        </figure>
+        <figure>
+          <video controls src="./videos/borrachito.mp4"></video>
+          <figcaption><p>Borrachito</p></figcaption>
+        </figure>
+        <figure>
+          <video controls src="./videos/caminando.mp4"></video>
+          <figcaption><p>Caminando</p></figcaption>
+        </figure>
+        <figure>
+          <video controls src="./videos/fotitos.mp4"></video>
+          <figcaption><p>Fotitos</p></figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <!-- Lógica de la página -->
+    <script>
+      const preguntas = [
+        {
+          pregunta: "¿Qué día nos hicimos novios?",
+          opciones: ["14/02/2024", "07/10/2024", "17/10/2024", "07/11/2024"],
+          correcta: 1
+        },
+        {
+          pregunta: "¿Cómo se llamará nuestra wawa?",
+          opciones: ["Ameri", "Aria", "Aitana", "Amara"],
+          correcta: 0
+        },
+        {
+          pregunta: "¿Cuándo fue nuestra primera salida?",
+          opciones: ["01/01/2024", "14/02/2024", "24/01/2024", "20/01/2024"],
+          correcta: 2
+        },
+        {
+          pregunta: "¿Quién dio el primer paso?",
+          opciones: ["Luz", "Tú", "Los dos al mismo tiempo"],
+          correcta: 0
+        },
+        {
+          pregunta: "¿Dónde nos hicimos novios?",
+          opciones: ["En la plaza", "En el parque", "En la escalinata", "En la universidad"],
+          correcta: 2
+        },
+        {
+          pregunta: "¿Qué canción escuchamos mientras tomábamos emoliente esa noche?",
+          opciones: ["Olvídate de mí", "Alpaquitay", "Amor vuelve", "El embrujo"],
+          correcta: 1
+        },
+        {
+          pregunta: "¿Qué canción crees que nos representa?",
+          tipo: "libre"
+        }
+      ];
+
+      let preguntaActual = 0;
+
+      function cargarPregunta() {
+        const p = preguntas[preguntaActual];
+        document.getElementById("titulo-pregunta").textContent = `Pregunta ${preguntaActual + 1} de ${preguntas.length}`;
+        document.getElementById("texto-pregunta").textContent = p.pregunta;
+        document.getElementById("mensaje-error").style.display = "none";
+
+        const opcionesContainer = document.getElementById("opciones-container");
+        const inputContainer = document.getElementById("input-container");
+
+        opcionesContainer.innerHTML = "";
+
+        if (p.tipo === "libre") {
+          opcionesContainer.style.display = "none";
+          inputContainer.style.display = "block";
+        } else {
+          opcionesContainer.style.display = "flex";
+          inputContainer.style.display = "none";
+
+          p.opciones.forEach((opcion, index) => {
+            const btn = document.createElement("button");
+            btn.textContent = opcion;
+            btn.onclick = () => responder(index);
+            opcionesContainer.appendChild(btn);
+          });
+        }
+      }
+
+      function responder(indiceSeleccionado) {
+        if (indiceSeleccionado === preguntas[preguntaActual].correcta) {
+          siguientePregunta();
+        } else {
+          mostrarError("❌ ¡Ups! Respuesta incorrecta, ¡inténtalo de nuevo mi amor!");
+        }
+      }
+
+      async function responderLibre() {
+        const valor = document.getElementById("respuesta-libre").value.trim();
+        const btnEnviar = document.getElementById("btn-enviar-libre");
+
+        if (valor !== "") {
+          btnEnviar.disabled = true;
+          btnEnviar.textContent = "Guardando...";
+
+          try {
+            await fetch("https://formspree.io/f/xgaejnvo", {
+              method: "POST",
+              headers: { 
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify({ 
+                pregunta: "¿Qué canción crees que nos representa?",
+                respuesta_cancion: valor 
+              })
+            });
+          } catch (error) {
+            console.error("Error enviando respuesta:", error);
+          }
+
+          siguientePregunta();
+        } else {
+          mostrarError("✏️ Escribe el nombre de la canción para continuar.");
+        }
+      }
+
+      function siguientePregunta() {
+        preguntaActual++;
+        if (preguntaActual < preguntas.length) {
+          cargarPregunta();
+        } else {
+          const inicio = document.getElementById("pantalla-inicio");
+          const contenido = document.querySelector("main");
+          const menu = document.getElementById("menu-navegacion");
+          const reproductor = document.getElementById("reproductor-flotante");
+
+          inicio.style.opacity = "0";
+          setTimeout(() => {
+            inicio.style.display = "none";
+            contenido.style.display = "block";
+            menu.style.display = "flex";
+            reproductor.style.display = "flex";
+          }, 500);
+        }
+      }
+
+      function mostrarError(texto) {
+        const msg = document.getElementById("mensaje-error");
+        msg.style.display = "block";
+        msg.textContent = texto;
+      }
+
+      // Control del Reproductor de Música
+      function toggleMusica() {
+        const audio = document.getElementById("audio-fondo");
+        const btnMusica = document.getElementById("btn-musica");
+
+        if (audio.paused) {
+          audio.play();
+          btnMusica.textContent = "⏸";
+        } else {
+          audio.pause();
+          btnMusica.textContent = "▶";
+        }
+      }
+
+      // Razones interactivas
+      const razones = [
+        "Porque tus ojitos dormilones son lo más tierno del mundo.",
+        "Porque tus palabras tienen la capacidad de arreglar cualquier día gris.",
+        "Porque eres mi compañera de vida y aventuras.",
+        "Porque me apoyas en cada una de mis locuras y proyectos.",
+        "Por la forma tan bonita que tenias de esperarme en mis salidas.",
+        "Porque compartimos los mejores momentos.",
+        "Porque me haces sentir un amor único que jamás había sentido.",
+        "Porque te dan risa mis chistes.",
+        "Porque cada salida contigo se vuelve inolvidable.",
+        "Simplemente te amo por todo lo que eres, Lu :3"
+      ];
+
+      function mostrarOtraRazon() {
+        const randomIndex = Math.floor(Math.random() * razones.length);
+        const elementoTexto = document.getElementById("texto-razon");
+        
+        elementoTexto.style.opacity = "0";
+        setTimeout(() => {
+          elementoTexto.textContent = razones[randomIndex];
+          elementoTexto.style.opacity = "1";
+        }, 150);
+      }
+
+      // Contador de tiempo juntos
+      const fechaInicio = new Date("2024-10-07T00:00:00");
+
+      function actualizarContador() {
+        const ahora = new Date();
+        const diferencia = ahora - fechaInicio;
+
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((diferencia / 1000 / 60) % 60);
+        const segundos = Math.floor((diferencia / 1000) % 60);
+
+        const elDias = document.getElementById("dias");
+        const elHoras = document.getElementById("horas");
+        const elMinutos = document.getElementById("minutos");
+        const elSegundos = document.getElementById("segundos");
+
+        if (elDias) elDias.textContent = dias;
+        if (elHoras) elHoras.textContent = horas;
+        if (elMinutos) elMinutos.textContent = minutos;
+        if (elSegundos) elSegundos.textContent = segundos;
+      }
+
+      setInterval(actualizarContador, 1000);
+      actualizarContador();
+
+      cargarPregunta();
+    </script>
+</body>
+</html>
